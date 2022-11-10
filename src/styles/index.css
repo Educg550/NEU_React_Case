@@ -1,4 +1,4 @@
-@import url(./styles/fonts.css);
+@import url(./fonts.css);
 
 body {
   margin: 0;
@@ -6,4 +6,9 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #ff3300;
+  text-decoration: none;
 }
