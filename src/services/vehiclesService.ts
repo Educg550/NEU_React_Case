@@ -1,7 +1,5 @@
-import axios from "axios";
 import { Api } from "../utils/api";
-import { authParams, defaultConfigs } from "../utils/constants";
-const base64 = require("base-64");
+import { AuthProps } from "../utils/constants";
 
 export interface User {
   id: number;
@@ -14,24 +12,16 @@ interface RequestProps {
   user: User;
 }
 
-const headers = new Headers();
-headers.set(
-  "Authorization",
-  "Basic " +
-    base64.encode(authParams.auth.username + ":" + authParams.auth.password)
-);
+export const handleLogin = async (auth: AuthProps) => {
+  const data = await Api.post<any, RequestProps>("v1/neu/auth", {}, auth).catch(
+    (err) => console.log(err)
+  );
 
-export const handleLogin = async () => {
-  fetch(defaultConfigs.baseURL + "v1/neu/auth", {
-    method: "POST",
-    headers: headers,
-    //credentials: 'user:passwd'
-  })
-    .then((response) => response.json())
-    .then((json) => getVehicles(json));
+  if (data) getVehicles(data);
+  else console.log("Invalid data!");
 };
 
-const getVehicles = async (token: any) => {
+const getVehicles = async (token: RequestProps) => {
   // await Api.get("v1/neu/vehicles", token);
   console.log(token);
 };

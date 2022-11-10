@@ -12,10 +12,3 @@ export interface AuthProps {
 export const defaultConfigs: RequestProps = {
   baseURL: "https://ps.brickseguros.com.br/",
 };
-
-export const authParams: AuthProps = {
-  auth: {
-    username: "teste",
-    password: "teste",
-  },
-};

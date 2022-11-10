@@ -5,7 +5,7 @@ import "./styles/index.css";
 import theme from "./styles/theme/colors";
 import { ThemeProvider } from "styled-components";
 
-import App from "./App";
+import Login from "./Login";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <Login />
     </ThemeProvider>
   </React.StrictMode>
 );
