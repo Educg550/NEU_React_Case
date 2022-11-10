@@ -12,10 +12,17 @@ interface RequestProps {
   user: User;
 }
 
-export const handleLogin = async (auth: AuthProps) => {
-  const data = await Api.post<any, RequestProps>("v1/neu/auth", {}, auth).catch(
-    (err) => console.log(err)
-  );
+export const handleLogin = async (authData: AuthProps) => {
+  const data = await Api.post<any, RequestProps>(
+    "v1/neu/auth",
+    JSON.stringify(authData.auth),
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    }
+  ).catch((err) => console.log(err));
 
   if (data) getVehicles(data);
   else console.log("Invalid data!");
