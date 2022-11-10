@@ -16,6 +16,6 @@ export const defaultConfigs: RequestProps = {
 export const authParams: AuthProps = {
   auth: {
     username: "teste",
-    password: "teste#",
+    password: "teste",
   },
 };
