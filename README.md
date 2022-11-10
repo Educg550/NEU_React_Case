@@ -1,2 +1,21 @@
-# NEU_React_Case
+# 🚀 PS NEU - ReactJS Case
+
 Plataforma web construída com ReactJS e TypeScript para case NEU (Brick)
+
+# 💻 Tecnologias Usadas
+
+- ⚛️ ReactJS
+- 💙 TypeScript;
+- 🧶 Yarn;
+- ⌛ Axios;
+- 💅 Styled Components.
+
+# 👨‍💻 Como executar
+
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
