@@ -1,6 +1,10 @@
 import { Container } from "./styles";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  hasButton: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ hasButton }) => {
   return (
     <Container>
       <img
@@ -8,6 +12,12 @@ const Header: React.FC = () => {
         alt="Logo Brick"
         width={120}
       />
+      {hasButton && (
+        <div>
+          <button>Assistência 24 horas</button>
+          <div>ED</div>
+        </div>
+      )}
     </Container>
   );
 };

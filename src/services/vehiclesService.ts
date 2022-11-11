@@ -28,7 +28,7 @@ export const handleLogin = async (authData: AuthProps) => {
   else console.log("Invalid data!");
 };
 
-const getVehicles = async (token: RequestProps) => {
+export const getVehicles = async (token: RequestProps) => {
   // await Api.get("v1/neu/vehicles", token);
   console.log(token);
 };
