@@ -1,4 +1,4 @@
-import { Container } from "./styles";
+import { Container, AssistBox, MenuButton, CompanyImage } from "./styles";
 
 interface HeaderProps {
   hasButton: boolean;
@@ -13,10 +13,10 @@ const Header: React.FC<HeaderProps> = ({ hasButton }) => {
         width={120}
       />
       {hasButton && (
-        <div>
-          <button>Assistência 24 horas</button>
-          <div>ED</div>
-        </div>
+        <AssistBox>
+          <MenuButton>Assistência 24 horas</MenuButton>
+          <CompanyImage>ED</CompanyImage>
+        </AssistBox>
       )}
     </Container>
   );

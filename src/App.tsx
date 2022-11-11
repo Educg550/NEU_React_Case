@@ -3,22 +3,22 @@ import Login from "./pages/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { RequireAuth } from "./contexts/auth/RequireAuth";
-import Vehicles from "./pages/Vehicles";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
           <Route
-            path="/vehicles"
+            path="/"
             element={
               <RequireAuth>
-                <Vehicles />
+                <Home />
               </RequireAuth>
             }
           />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </>

@@ -11,16 +11,39 @@ export const Container = styled.div`
   background: ${(props) => props.theme.colors.white};
 `;
 
-export const Title = styled.h2`
-  color: ${(props) => props.theme.colors.black};
+export const AssistBox = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
 `;
 
-export const Input = styled.input`
-  width: 100%;
-  display: block;
+export const MenuButton = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  padding: 0.5rem;
+  border-radius: 2px;
+
+  background: ${(props) => props.theme.colors.orange};
+  font-weight: 700;
+  font-size: 14px;
+  color: ${(props) => props.theme.colors.white};
 `;
 
-export const Subtitles = styled.span`
-  color: ${(props) => props.theme.colors.neutralGray};
-  font-size: 18px;
+export const CompanyImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  background: rgba(26, 26, 26, 0.1);
 `;
