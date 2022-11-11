@@ -5,15 +5,18 @@ import "./styles/index.css";
 import theme from "./styles/theme/colors";
 import { ThemeProvider } from "styled-components";
 
-import Login from "./Login";
+import App from "./App";
+import { AuthProvider } from "./contexts/auth/AuthProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Login />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

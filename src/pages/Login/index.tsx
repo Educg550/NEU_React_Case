@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { handleLogin } from "./services/vehiclesService";
+import React, { useContext, useState } from "react";
 
-import Header from "./components/Header";
+import Header from "../../components/Header";
 import {
   Wrapper,
   ContainerForm,
@@ -10,34 +9,44 @@ import {
   Title,
   InputBox,
   Button,
-} from "./styles/Login";
-import { AuthProps } from "./utils/constants";
+} from "../../styles/Login";
+import { AuthContext, AuthProps } from "../../contexts/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmitClick = () => {
-    const authData: AuthProps = {
-      auth: {
+  const { handleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmitClick = async () => {
+    if (userName && password) {
+      const authData: AuthProps = {
         username: userName,
         password: password,
-      },
-    };
+      };
 
-    handleLogin(authData);
+      const isLogged = await handleLogin(authData);
+      if (isLogged) {
+        navigate("/vehicles");
+      } else {
+        console.log("Error when signing in...");
+      }
+    }
   };
 
   return (
     <Wrapper>
       <Header hasButton={false} />
-      <ContainerForm action="post" onSubmit={handleSubmitClick}>
+      <ContainerForm onSubmit={handleSubmitClick}>
         <Title>Login</Title>
         <InputBox>
           <Subtitles>Email</Subtitles>
           <Input
             type="text"
             placeholder="Digite seu e-mail"
+            required
             onChange={(res: React.FormEvent<HTMLInputElement>) =>
               setUserName(res.currentTarget.value)
             }
@@ -48,6 +57,7 @@ function Login() {
           <Input
             type="password"
             placeholder="Digite sua senha"
+            required
             onChange={(res: React.FormEvent<HTMLInputElement>) =>
               setPassword(res.currentTarget.value)
             }
