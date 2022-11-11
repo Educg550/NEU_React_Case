@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
   const handleLogin = async (userData: AuthProps) => {
     const data = await signin(userData).catch((err) => console.log(err));
+    console.log(data);
     if (data) {
       setUser(data.user);
       return true;
