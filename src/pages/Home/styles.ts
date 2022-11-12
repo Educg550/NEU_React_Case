@@ -41,3 +41,16 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-around;
 `;
+
+export const CloseButton = styled.button`
+  position: fixed;
+  top: 38vh;
+  right: 25vw;
+
+  z-index: 1;
+
+  font-size: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+`;

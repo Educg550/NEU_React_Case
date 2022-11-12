@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import AddVehicle from "../../components/AddVehicle";
 import Header from "../../components/Header";
 import { getVehicles } from "../../utils/api";
-import { Wrapper, TitleBox, Title, AddButton, Card } from "./styles";
+import {
+  Wrapper,
+  TitleBox,
+  Title,
+  AddButton,
+  Card,
+  CloseButton,
+} from "./styles";
 
 export interface VehicleProps {
   id: number;
@@ -52,6 +59,15 @@ function Home() {
       <div>
         <Card></Card>
       </div>
+      {isModalVisible && (
+        <CloseButton onClick={handleToggleModal}>
+          <img
+            src={process.env.PUBLIC_URL + "./close.svg"}
+            alt="Close icon"
+            width={20}
+          />
+        </CloseButton>
+      )}
       <AddVehicle isVisible={isModalVisible} />
     </Wrapper>
   );

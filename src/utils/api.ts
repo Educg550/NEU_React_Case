@@ -42,8 +42,8 @@ export const getVehicles = async (token: string) => {
 
   // De forma semelhante à requisição POST para obtenção do Token, a informação dos carros
   // pôde ser obtida somente via curl, por conta das políticas de bloqueio CORS na Web.
-  // Alguns carros obtidos via curl (e recebidos da porta 5000 com auxílio da ferramenta
-  // "json-server"):
+  // Seguem alguns carros obtidos via curl (e recebidos da porta 5000 com auxílio da
+  // ferramenta "json-server"):
   const authResponse = await Api.get("auth").catch((err) =>
     console.log(`Erro ao obter dados do usuário: ${err}`)
   );
@@ -51,7 +51,7 @@ export const getVehicles = async (token: string) => {
     const response = await Api.get("cars").catch((err) =>
       console.log(`Erro ao obter dados dos carros: ${err}`)
     );
-    console.log(`Carros obtidos: ${response}`);
+    console.log(`Carros obtidos: ${response?.data}`);
     if (response?.data.cars) return response.data;
   }
 };

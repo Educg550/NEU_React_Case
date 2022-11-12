@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { FormContainer, InputBox, Subtitles, Input, Button } from "./styles";
+import {
+  Overlay,
+  FormContainer,
+  Title,
+  InputBox,
+  Subtitles,
+  Input,
+  Button,
+} from "./styles";
 
 interface AddVehicleProps {
   isVisible: boolean;
@@ -10,21 +18,28 @@ const AddVehicle: React.FC<AddVehicleProps> = ({ isVisible }) => {
 
   const handleAddVehicleClick = () => {};
 
-  return (
-    <FormContainer>
-      <InputBox>
-        <Subtitles>Senha</Subtitles>
-        <Input
-          type="text"
-          placeholder="Digite a Placa do veículo"
-          required
-          onChange={(res: React.FormEvent<HTMLInputElement>) =>
-            setPlate(res.currentTarget.value)
-          }
-        />
-      </InputBox>
-      <Button type="button">Adicionar</Button>
-    </FormContainer>
+  return isVisible ? (
+    <Overlay>
+      <FormContainer>
+        <Title>Adicionar veículo</Title>
+        <InputBox>
+          <Subtitles>Placa</Subtitles>
+          <Input
+            type="text"
+            placeholder="Digite a Placa do veículo"
+            required
+            onChange={(res: React.FormEvent<HTMLInputElement>) =>
+              setPlate(res.currentTarget.value)
+            }
+          />
+        </InputBox>
+        <Button type="button" onClick={handleAddVehicleClick}>
+          Adicionar
+        </Button>
+      </FormContainer>
+    </Overlay>
+  ) : (
+    <></>
   );
 };
 
