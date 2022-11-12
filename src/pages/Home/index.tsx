@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import AddVehicle from "../../components/AddVehicle";
 import Header from "../../components/Header";
+import VehicleCard from "../../components/VehicleCard";
 import { getVehicles } from "../../utils/api";
 import {
   Wrapper,
   TitleBox,
   Title,
   AddButton,
-  Card,
   CloseButton,
+  CardsContainer,
 } from "./styles";
 
 export interface VehicleProps {
@@ -28,7 +29,7 @@ export interface VehicleProps {
 
 function Home() {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [vehicleList, setVehicleList] = useState<any>();
+  const [vehicleList, setVehicleList] = useState<VehicleProps[]>([]);
 
   const handleToggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -37,13 +38,13 @@ function Home() {
   useEffect(() => {
     const fetchVehicles = async (token: string) => {
       const vehicles = await getVehicles(token);
-      setVehicleList(vehicles);
+      if (vehicles) setVehicleList(vehicles);
+      else console.log("Houve um erro ao obter os veículos...");
     };
 
     const cookieToken = localStorage.getItem("authToken");
     if (cookieToken) {
       fetchVehicles(cookieToken);
-      console.log(vehicleList);
     } else {
       console.log("Houve um erro ao obter o cookie...");
     }
@@ -56,9 +57,11 @@ function Home() {
         <Title>Lista de veículos</Title>
         <AddButton onClick={handleToggleModal}>Adicionar veículo</AddButton>
       </TitleBox>
-      <div>
-        <Card></Card>
-      </div>
+      <CardsContainer>
+        {vehicleList.map((vehicleData) => {
+          return <VehicleCard key={vehicleData.id} {...vehicleData} />;
+        })}
+      </CardsContainer>
       {isModalVisible && (
         <CloseButton onClick={handleToggleModal}>
           <img

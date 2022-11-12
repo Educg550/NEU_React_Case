@@ -1,21 +1,33 @@
 import { VehicleProps } from "../../pages/Home";
-import { Container } from "./styles";
+import {
+  Container,
+  ImageContainer,
+  VehicleDataContainer,
+  InfoContainer,
+  Title,
+  Plate,
+  Subtitle,
+} from "./styles";
 
-const VehicleCard: React.FC<VehicleProps> = ({
-  id,
-  make,
-  model,
-  chassis,
-  model_year,
-  color,
-  plate,
-  photo,
-  created_at,
-  fipe,
-  fipe_code,
-  make_year,
-}) => {
-  return <Container></Container>;
+const VehicleCard: React.FC<VehicleProps> = ({ make, model, plate, photo }) => {
+  return (
+    <Container>
+      <ImageContainer>
+        <img src={photo} alt={model} width={250} />
+        <Title>{model}</Title>
+      </ImageContainer>
+      <VehicleDataContainer>
+        <InfoContainer>
+          <Plate>{plate}</Plate>
+          <Plate>{make}</Plate>
+        </InfoContainer>
+        <InfoContainer>
+          <Subtitle>Placa</Subtitle>
+          <Subtitle>Marca</Subtitle>
+        </InfoContainer>
+      </VehicleDataContainer>
+    </Container>
+  );
 };
 
 export default VehicleCard;

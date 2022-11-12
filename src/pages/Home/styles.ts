@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
 
-  background-color: #fff6f4;
+  background-color: ${(props) => props.theme.colors.white};
   height: 100vh;
 `;
 
@@ -36,12 +37,6 @@ export const AddButton = styled.button`
   cursor: pointer;
 `;
 
-export const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
 export const CloseButton = styled.button`
   position: fixed;
   top: 38vh;
@@ -53,4 +48,17 @@ export const CloseButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+`;
+
+export const CardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+  justify-content: center;
+
+  gap: 15px;
+  padding: 10px;
+
+  max-width: 100vw;
 `;

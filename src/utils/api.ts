@@ -1,18 +1,15 @@
 import axios from "axios";
 import { defaultConfigs } from "./constants";
 import { AuthProps } from "../contexts/auth/AuthContext";
+import { VehicleProps } from "../pages/Home";
 
 export const Api = axios.create(defaultConfigs);
 
 export const signin = async (authData: AuthProps) => {
-  // const authorization = Buffer.from(
-  //   `${authData.username}:${authData.password}`,
-  //   "utf8"
-  // ).toString("base64");
-  // const response = await Api.post("v1/neu/auth/", {
+  // const response = await Api.post("v1/neu/auth/", {}, {
   //   method: "post",
   //   headers: {
-  //     Authorization: `Basic ${authorization}`,
+  //     auth: authData,
   //   },
   // }).catch((err) => console.log(err));
   // if (response) {
@@ -48,22 +45,25 @@ export const getVehicles = async (token: string) => {
     console.log(`Erro ao obter dados do usuário: ${err}`)
   );
   if (authResponse?.data.token === token) {
-    // for (let i = 1655; i >= 1636; i--) {
-
-    // }
+    let vehicles: VehicleProps[] = [];
     await Api.get(`cars`)
-      .then((resp) => {
-        let data = resp.data;
-        data.forEach((e: any) => {
-          console.log(e);
+      .then((res) => {
+        res.data.forEach((vehicle: VehicleProps) => {
+          vehicles.push(vehicle);
         });
       })
       .catch((err) => console.log(`Erro ao obter dados dos carros: ${err}`));
-    // console.log(`Carros obtidos: ${response?.data}`);
-    // if (response?.data.cars) return response.data;
+    return vehicles;
   }
 };
 
-export const createVehicle = async (token: string) => {
-  console.log(token);
+export const createVehicle = async (token: string, plate: string) => {
+  const authResponse = await Api.get("auth").catch((err) =>
+    console.log(`Erro ao obter dados do usuário: ${err}`)
+  );
+  if (authResponse?.data.token === token) {
+    await Api.post(`cars`, {
+      plate: plate,
+    }).catch((err) => console.log(`Erro ao obter dados dos carros: ${err}`));
+  }
 };

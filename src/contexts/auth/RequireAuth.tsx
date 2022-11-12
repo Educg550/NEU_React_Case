@@ -11,6 +11,6 @@ const RedirectLogin = () => {
 
   useEffect(() => {
     navigate("/login");
-  }, []);
+  }, [navigate]);
   return <></>;
 };

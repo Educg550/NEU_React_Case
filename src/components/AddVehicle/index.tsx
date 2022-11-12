@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createVehicle } from "../../utils/api";
 import {
   Overlay,
   FormContainer,
@@ -16,7 +17,13 @@ interface AddVehicleProps {
 const AddVehicle: React.FC<AddVehicleProps> = ({ isVisible }) => {
   const [plate, setPlate] = useState("");
 
-  const handleAddVehicleClick = () => {};
+  const handleAddVehicleClick = async () => {
+    const cookieToken = localStorage.getItem("authToken");
+    if (cookieToken) {
+      await createVehicle(cookieToken, plate);
+      window.location.reload();
+    } else console.log("Não foi possível autenticar o usuário atual...");
+  };
 
   return isVisible ? (
     <Overlay>

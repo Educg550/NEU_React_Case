@@ -6,9 +6,10 @@ export const Container = styled.div`
   margin: 0 auto;
 
   width: 100%;
-  height: 82px;
+  min-height: 82px;
 
   background: ${(props) => props.theme.colors.white};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
 `;
 
 export const AssistBox = styled.div`
