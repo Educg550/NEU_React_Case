@@ -29,7 +29,7 @@ function Login() {
 
       const isLogged = await handleLogin(authData);
       if (isLogged) {
-        navigate("/vehicles");
+        navigate("/");
       } else {
         console.log("Error when signing in...");
       }
@@ -39,7 +39,7 @@ function Login() {
   return (
     <Wrapper>
       <Header hasButton={false} />
-      <ContainerForm onSubmit={handleSubmitClick}>
+      <ContainerForm>
         <Title>Login</Title>
         <InputBox>
           <Subtitles>Email</Subtitles>
@@ -68,7 +68,9 @@ function Login() {
             Esqueci minha senha
           </a>
         </Subtitles>
-        <Button type="submit">Login</Button>
+        <Button type="button" onClick={handleSubmitClick}>
+          Login
+        </Button>
         <Subtitles>
           Ainda não tem conta?
           <a href="https://brick-by-brick.notion.site/PS-NEU-Case-48fe48a964f3483c8c568ffb0a7f6932">

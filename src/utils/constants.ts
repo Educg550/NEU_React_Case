@@ -1,9 +1,17 @@
-export interface RequestProps {
+import { VehicleProps } from "../pages/Home";
+
+export interface AxiosConfigProps {
   baseURL: string;
+  headers: Object;
 }
 
-export const defaultConfigs: RequestProps = {
-  baseURL: "https://ps.brickseguros.com.br/",
-};
+export interface FakeApiCars {
+  cars: VehicleProps[];
+}
 
-export const token = "teste";
+export const defaultConfigs: AxiosConfigProps = {
+  baseURL: "http://localhost:5000/",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
+};

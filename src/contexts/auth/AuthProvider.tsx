@@ -7,11 +7,15 @@ import { AuthContext } from "./AuthContext";
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  const setToken = (token: string) => {
+    localStorage.setItem("authToken", token);
+  };
+
   const handleLogin = async (userData: AuthProps) => {
-    const data = await signin(userData).catch((err) => console.log(err));
-    console.log(data);
+    const data = await signin(userData);
     if (data) {
-      setUser(data.user);
+      setUser(data?.user);
+      setToken(data?.token);
       return true;
     }
     return false;

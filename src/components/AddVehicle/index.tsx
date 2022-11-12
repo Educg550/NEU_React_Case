@@ -23,7 +23,7 @@ const AddVehicle: React.FC<AddVehicleProps> = ({ isVisible }) => {
           }
         />
       </InputBox>
-      <Button type="submit">Adicionar</Button>
+      <Button type="button">Adicionar</Button>
     </FormContainer>
   );
 };
