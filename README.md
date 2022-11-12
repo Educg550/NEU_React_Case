@@ -1,6 +1,6 @@
 # 🚀 PS NEU - ReactJS Case
 
-Plataforma web construída com ReactJS e TypeScript para case NEU (Brick)
+Plataforma web construída com ReactJS e TypeScript para case NEU
 
 # 💻 Tecnologias Usadas
 
@@ -13,11 +13,13 @@ Plataforma web construída com ReactJS e TypeScript para case NEU (Brick)
 
 # 👨‍💻 Como executar
 
+### `yarn`
+
 ### `yarn serve`
 
 ### `yarn start`
 
-Os comandos acima rodam o projeto em modo de desenvolvimento.\
+Os comandos acima instalam as dependências e rodam o projeto em modo de desenvolvimento.\
 Abra [http://localhost:3000](http://localhost:3000) para ver o resultado no navegador.
 
 OBS: é importante rodar o comando `yarn serve` para execução

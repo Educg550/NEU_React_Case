@@ -48,11 +48,19 @@ export const getVehicles = async (token: string) => {
     console.log(`Erro ao obter dados do usuário: ${err}`)
   );
   if (authResponse?.data.token === token) {
-    const response = await Api.get("cars").catch((err) =>
-      console.log(`Erro ao obter dados dos carros: ${err}`)
-    );
-    console.log(`Carros obtidos: ${response?.data}`);
-    if (response?.data.cars) return response.data;
+    // for (let i = 1655; i >= 1636; i--) {
+
+    // }
+    await Api.get(`cars`)
+      .then((resp) => {
+        let data = resp.data;
+        data.forEach((e: any) => {
+          console.log(e);
+        });
+      })
+      .catch((err) => console.log(`Erro ao obter dados dos carros: ${err}`));
+    // console.log(`Carros obtidos: ${response?.data}`);
+    // if (response?.data.cars) return response.data;
   }
 };
 

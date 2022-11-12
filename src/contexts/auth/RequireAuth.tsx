@@ -1,9 +1,16 @@
-import { useContext } from "react";
-import Login from "../../pages/Login";
-import { AuthContext } from "./AuthContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
-  const { user } = useContext(AuthContext);
-  if (user) return children;
-  return <Login />;
+  if (localStorage.getItem("authToken")) return children;
+  return <RedirectLogin />;
+};
+
+const RedirectLogin = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/login");
+  }, []);
+  return <></>;
 };
